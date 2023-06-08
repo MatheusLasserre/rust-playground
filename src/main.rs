@@ -1,21 +1,14 @@
 
 
 fn main() {
-    let sup = vec![1,2,3];
-    let mut list = sup
-    .iter()
-    .map(|x| {
-         x + 1
-    });
-  
-    let mut new_vector = vec![];
-
-    while let Some(x) = list.next() {
-        new_vector.push(x);
-    }
-
-    println!("{:?}", new_vector);
-
+    std::fs::read_to_string("lines")
+    .unwrap()
+    .lines()
+    .enumerate()
+    .filter(|(idx, _)| idx % 2 == 0)
+    .skip(2)
+    .take(2)
+    .for_each(|(_, str)| println!("{}", str));
     
-    
+
 }
