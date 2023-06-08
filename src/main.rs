@@ -1,42 +1,36 @@
 
-
-enum Color {
-    Red,
-    Green,
-    Blue
+struct Custom {
+    age: usize,
+    name: String
 }
 
-impl Color {
-    fn is_green(&self) -> bool {
-        if let Color::Green = self {
-            return true;
-        }
-        return false;
-    }
+enum Item {
+    Number(usize),
+    String(String),
+    MyCustom(Custom)
+}
 
-    fn is_green_parts(&self) -> bool {
-        match self {
-            Color::Red => return false,
-            Color::Green => return false,
-            Color::Blue => return true,
+impl Item {
+    pub fn log(&self) {
+        match &self {
+            Item::Number(number) => println!("{}", number),
+            Item::String(string) => println!("{}", string),
+            Item::MyCustom(custom) => println!("Name :{}, Age:{}", custom.name, custom.age),
         }
     }
 }
 
-fn print_color (color: Color) {
-    match color {
-        Color::Red => println!("Red"),
-        Color::Green => println!("Green"),
-        Color::Blue => println!("Blue"),
-    }
+fn append(items: &mut Vec<Item>) {
+    items.push(Item::String(("Hellowww").into()))
 }
-
 
 fn main() {
     
-    let foo = Color::Green;
-
-    foo.is_green();
+   let mut my_enum: Vec<Item> = vec![Item::Number(12)];
+   append(&mut my_enum);
+    my_enum
+    .iter()
+    .for_each(|f| f.log());
 
 }
 
