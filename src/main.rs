@@ -1,15 +1,20 @@
 
 
 fn main() {
-    
-    let list: Vec<_> = vec![1, 2, 3]
+    let sup = vec![1,2,3];
+    let mut list = sup
     .iter()
     .map(|x| {
-        return x + 1
-    })
-    .collect();
+         x + 1
+    });
+  
+    let mut new_vector = vec![];
 
-    println!("{:?}", list);
+    while let Some(x) = list.next() {
+        new_vector.push(x);
+    }
+
+    println!("{:?}", new_vector);
 
     
     
