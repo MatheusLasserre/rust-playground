@@ -15,7 +15,7 @@ impl Item {
         match &self {
             Item::Number(number) => println!("{}", number),
             Item::String(string) => println!("{}", string),
-            Item::MyCustom(custom) => println!("Name :{}, Age:{}", custom.name, custom.age),
+            Item::MyCustom(custom) => println!("Name: {}, Age: {}", custom.name, custom.age),
         }
     }
 }
@@ -26,7 +26,7 @@ fn append(items: &mut Vec<Item>) {
 
 fn main() {
     
-   let mut my_enum: Vec<Item> = vec![Item::Number(12)];
+   let mut my_enum: Vec<Item> = vec![Item::Number(12), Item::MyCustom(Custom { age: (23), name: ("Matheus".to_string()) })];
    append(&mut my_enum);
     my_enum
     .iter()
